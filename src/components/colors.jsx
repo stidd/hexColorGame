@@ -30,7 +30,13 @@ class Colors extends Component {
 
   handleDecision = c => {
     if (c === this.state.winner) {
-      this.setState({ headingColor: c });
+      let winningColor = this.state.colors.map(remake => (remake = c));
+      this.setState({
+        headingColor: c,
+        colors: winningColor
+      });
+    } else {
+      this.handleNewColors();
     }
   };
 
