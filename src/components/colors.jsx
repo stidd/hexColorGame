@@ -12,10 +12,10 @@ class Colors extends Component {
     this.handleNewColors();
   }
 
-  handleNewColors = (num = 6) => {
+  handleNewColors = (num = 6, size = 3) => {
     let hex = [];
     for (let i = 0; i < num; i++) {
-      hex.push(createRandomHex());
+      hex.push(createRandomHex(size));
     }
     let winner = hex[Math.floor(Math.random() * hex.length)];
     this.setState({
@@ -68,10 +68,16 @@ class Colors extends Component {
             Easy
           </button>
           <button
-            className="mode selected btn btn-danger"
+            className="mode selected btn btn-warning"
             onClick={() => this.handleNewColors(9)}
           >
             Hard
+          </button>
+          <button
+            className="btn btn-danger"
+            onClick={() => this.handleNewColors(9, 6)}
+          >
+            Spicy <span>🔥</span>
           </button>
         </div>
         <div className="container">

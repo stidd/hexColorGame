@@ -17,15 +17,15 @@ const colorValues = [
   "F"
 ];
 
-function createRandomHex() {
-  const hex = "#" + chooseRandomColor();
+function createRandomHex(size) {
+  const hex = "#" + chooseRandomColor(size);
   return hex;
 }
 
 //choose random color function
-function chooseRandomColor() {
+function chooseRandomColor(size) {
   let hexValues = [];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < size; i++) {
     const index = Math.floor(Math.random() * colorValues.length);
     hexValues.push(colorValues[index]);
   }
