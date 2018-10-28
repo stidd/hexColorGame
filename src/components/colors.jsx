@@ -5,7 +5,9 @@ class Colors extends Component {
   state = {
     colors: [],
     winner: undefined,
-    headingColor: "#2c8e99"
+    headingColor: "#2c8e99",
+    size: undefined,
+    num: undefined
   };
 
   componentDidMount() {
@@ -21,7 +23,9 @@ class Colors extends Component {
     this.setState({
       colors: hex,
       winner: winner,
-      headingColor: "#2c8e99"
+      headingColor: "#2c8e99",
+      size: size,
+      num: num
     });
   };
 
@@ -37,7 +41,7 @@ class Colors extends Component {
         colors: winningColor
       });
     } else {
-      this.handleNewColors();
+      this.handleNewColors(this.state.num, this.state.size);
     }
   };
 
@@ -56,7 +60,7 @@ class Colors extends Component {
             className="reset btn btn-primary"
             onClick={() => this.handleNewColors()}
           >
-            New Colors
+            New
           </button>
           <span className="message">
             {this.state.winner === this.state.headingColor ? "YOU WIN!" : ""}
@@ -77,7 +81,7 @@ class Colors extends Component {
             className="btn btn-danger"
             onClick={() => this.handleNewColors(9, 6)}
           >
-            Spicy <span>🔥</span>
+            Spicy🔥
           </button>
         </div>
         <div className="container">
