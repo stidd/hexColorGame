@@ -3,20 +3,21 @@ import createRandomHex from "../hexLogic";
 
 class Colors extends Component {
   state = {
-    difficulty: 6,
     colors: [],
     winner: undefined,
     headingColor: "#2c8e99"
   };
 
-  handleNewColors = () => {
+  componentDidMount() {
+    this.handleNewColors();
+  }
+
+  handleNewColors = (num = 6) => {
     let hex = [];
-    for (let i = 0; i < this.state.difficulty; i++) {
+    for (let i = 0; i < num; i++) {
       hex.push(createRandomHex());
     }
-
     let winner = hex[Math.floor(Math.random() * hex.length)];
-
     this.setState({
       colors: hex,
       winner: winner,
@@ -61,14 +62,14 @@ class Colors extends Component {
             {this.state.winner === this.state.headingColor ? "YOU WIN!" : ""}
           </span>
           <button
-            className="mode btn btn-success"
-            onClick={() => this.handleDifficulty(6)}
+            className="mode btn btn-success selected"
+            onClick={() => this.handleNewColors(6)}
           >
             Easy
           </button>
           <button
             className="mode selected btn btn-danger"
-            onClick={() => this.handleDifficulty(9)}
+            onClick={() => this.handleNewColors(9)}
           >
             Hard
           </button>
